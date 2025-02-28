@@ -1,0 +1,150 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #b5f7a5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background-color: #d6ffc5;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.container h1 {
+    font-size: 24px;
+    color: #000;
+}
+
+form {
+    width: 395px;
+    margin-top: 20px;
+}
+
+input {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid #2ecc71;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.register-btn {
+    width: 85%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #2ecc71;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.register-btn:disabled {
+    background-color: #165f34;
+    cursor: not-allowed;
+}
+
+.register-btn:hover {
+    background-color: #27ae60;
+}
+
+.small-btn {
+    background: none;
+    color: blue;
+    border: none;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.small-btn:hover {
+    color: black;
+}
+
+
+/*  галочка */
+.custom-checkbox {
+    display: none;
+}
+
+.custom-label {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.custom-label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #2ecc71;
+    border-radius: 4px;
+    margin-right: 10px;
+    transition: 0.2s;
+}
+
+.custom-checkbox:checked + .custom-label::before {
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+    content: "✔";
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    line-height: 18px;
+    font-weight: bold;
+}
+
+/* иконка для пароля */
+.password-container {
+    position: relative;
+}
+.password-container input {
+    width: 341px;
+    padding: 10px;
+    padding-right: 40px;
+    box-sizing: border-box;
+}
+.toggle-password {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+}
+
+.toggle-password2 {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    user-select: none;
+}
+
+/* Ошибка под полем пароля */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none; 
+    padding: 8px;
+    border: 2px solid red;
+    background-color: #ffe6e6;
+    border-radius: 5px;
+    width: calc();
+    text-align: center;
+}
