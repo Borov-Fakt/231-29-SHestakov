@@ -3,7 +3,7 @@
 require 'db.php'; // Подключаем файл с настройками базы
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = trim($_POST["login"]);
+    $username = trim($_POST["username"]);
     $email = trim($_POST["email"]);
     $password = $_POST["pass"];
    
