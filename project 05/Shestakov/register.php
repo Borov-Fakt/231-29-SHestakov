@@ -1,5 +1,5 @@
- <?php
-
+<?php
+session_start();
 require 'db.php'; // Подключаем файл с настройками базы
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,7 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->store_result();
 
     if ($stmt->num_rows > 0) {
-        die("Ошибка: Никнейм или Email уже зарегистрированы!");
+        $_SESSION["error"] = "Никнейм или Email уже зарегистрирован!";
+        header("Location: Registration.php");
+        exit();
     }
 
     $stmt->close();
@@ -34,5 +36,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
     $conn->close();
+    exit();
 }
 ?>

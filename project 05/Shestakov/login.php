@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (password_verify($password, $password_hash)) {
             echo "Вход успешен! ";
         } else {
-            $_SESSION["error"] = "Неверный пароль!";
+            $_SESSION["error"] = "Неверный никнейм, почта или пароль!";
             header("Location: input.php");
             exit();
         }

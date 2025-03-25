@@ -14,8 +14,18 @@
         <h1>FinanceExpert</h1>
         <h2>Регистрация</h2>
 
-        <form action="register.php" method="post">
-            <input type="text" id="username" placeholder="Никнейм" name="login" oninput="validateUsername()" required>
+        <?php session_start(); ?>
+        <div id="error-message" class="error-message" style="display: <?php echo isset($_SESSION["error"]) ? 'block' : 'none'; ?>">
+            <?php
+            if (isset($_SESSION["error"])) {
+                echo $_SESSION["error"];
+                unset($_SESSION["error"]); // Очищаем сообщение после отображения
+            }
+            ?>
+        </div>
+
+        <form action="register.php" action="register.php" method="post">
+            <input type="text" id="username" placeholder="Никнейм" name="username" oninput="validateUsername()" required>
             <div id="username-error" class="error-message"></div> 
 
             <input type="email" id="email" placeholder="Почта" name="email" onclick="validateEmail()" required>
