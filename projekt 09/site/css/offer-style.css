@@ -1,0 +1,306 @@
+/* ==========================================================================
+   css/offer-style.css
+   Стили для детальной страницы спецпредложения (special-offer-details.php)
+   ========================================================================== */
+
+/* :root { */
+    /* Если переменные не определены в style.css, определите их здесь: */
+    /* --primary-green: #28a745;
+    --dark-green: #1e7e34;
+    --light-green: #e2f0e6;
+    --white: #ffffff;
+    --light-gray-bg: #f8f9fa;
+    --text-color-dark: #343a40;
+    --dark-gray: #6c757d;
+    --border-color: #dee2e6;
+    --font-family: 'Poppins', sans-serif; */
+/* } */
+
+body {
+    /* Общие стили body, если отличаются от style.css. 
+       Обычно font-family и основной background наследуются. */
+}
+
+/* Общий контейнер для контента страницы предложения */
+.offer-page {
+    background-color: var(--light-gray-bg, #f8f9fa); /* Фоллбэк, если переменная не определена */
+    padding-bottom: 3rem; /* Отступ снизу перед футером */
+}
+
+/* Секция-герой */
+.offer-hero {
+    padding: 5rem 0; /* Увеличенные отступы для "вау" эффекта */
+    text-align: center;
+    color: var(--white, #fff);
+    /* background устанавливается inline-стилем из PHP с цветом из БД */
+    position: relative; /* Для возможных псевдо-элементов или оверлеев */
+}
+
+.offer-hero::before { /* Легкое затемнение для лучшей читаемости текста */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.15); /* Легкое затемнение */
+    z-index: 0;
+}
+
+.offer-hero .container.offer-hero__container { /* Контейнер внутри героя */
+    position: relative; /* Чтобы контент был над псевдо-элементом */
+    z-index: 1;
+}
+
+
+.offer-hero h1 {
+    color: inherit; 
+    font-size: 2.8rem;
+    margin-bottom: 0.8rem;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4); /* Более выраженная тень текста */
+    font-weight: 700;
+}
+
+.offer-hero__subtitle {
+    font-size: 1.4rem; /* Крупнее подзаголовок */
+    opacity: 0.95;
+    margin-bottom: 3rem; /* Больше отступ до иконки */
+    font-weight: 400;
+}
+
+.offer-hero__placeholder-icon-wrapper {
+    width: 100px; /* Размер иконки-плейсхолдера */
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255,255,255,0.15); /* Полупрозрачный фон */
+    border: 3px solid rgba(255,255,255,0.4);
+}
+
+.offer-hero__placeholder-icon-wrapper i {
+    font-size: 3rem;
+    color: rgba(255,255,255,0.85);
+}
+
+/* Секция с деталями предложения */
+.offer-details {
+    padding: 3.5rem 0; /* Отступы сверху/снизу */
+}
+
+.offer-details__container {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr; /* Основной контент чуть шире сайдбара */
+    gap: 3rem; /* Больше отступ между колонками */
+}
+
+/* Левая колонка - описание */
+.offer-description h2 {
+    text-align: left;
+    margin-bottom: 1.5rem;
+    color: var(--dark-green, #1e7e34);
+    font-size: 1.9rem; /* Заголовок секции покрупнее */
+    font-weight: 600;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-green, #28a745);
+    display: inline-block; /* Чтобы подчеркивание было по ширине текста */
+}
+.offer-description h2 small { /* Для "Погрузитесь в детали" */
+    font-size: 0.6em;
+    color: var(--dark-gray, #6c757d);
+    font-weight: 400;
+    display: block; /* С новой строки */
+    margin-top: 0.2em;
+}
+
+.offer-description p {
+    margin-bottom: 1.2rem;
+    line-height: 1.75; /* Увеличенный интерлиньяж */
+    color: var(--text-color-dark, #343a40);
+    font-size: 1rem;
+}
+
+.what-to-see-title { /* Заголовок для "Что посмотреть" */
+    margin-top: 2.5rem;
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+    color: var(--primary-green, #28a745);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+}
+.what-to-see-title i {
+    font-size: 0.9em; /* Иконка чуть меньше заголовка */
+    opacity: 0.9;
+}
+
+.what-to-see-list {
+    list-style: none;
+    padding-left: 0.5rem; /* Небольшой отступ для всего списка */
+    margin-bottom: 1.5rem;
+}
+.what-to-see-list li {
+    margin-bottom: 0.8rem;
+    color: var(--text-color-dark, #343a40);
+    display: flex;
+    align-items: flex-start; /* Выровнять иконку и текст по верху */
+    font-size: 0.95rem;
+}
+.icon-list-item {
+    color: var(--primary-green, #28a745);
+    margin-right: 0.8em;
+    font-size: 1em;
+    margin-top: 0.2em; /* Небольшой сдвиг иконки вниз */
+}
+
+/* Правая колонка - ключевая информация (сайдбар) */
+.offer-key-info {
+    /* Позиционирование или стили для самой колонки, если нужны */
+}
+
+.key-info-card {
+    background-color: var(--white, #fff);
+    padding: 2rem;
+    border-radius: 10px; /* Более скругленная карточка */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); /* Усиленная тень */
+    margin-bottom: 2rem;
+}
+.key-info-card h2 {
+    text-align: center;
+    font-size: 1.6rem;
+    color: var(--dark-green, #1e7e34);
+    margin-bottom: 2rem; /* Больше отступ */
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+}
+.key-info-card h2 i {
+    font-size: 0.9em;
+    opacity: 0.8;
+}
+
+.key-info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 2.5rem;
+}
+.key-info-table th, .key-info-table td {
+    padding: 1rem 0.5rem; /* Увеличен паддинг */
+    text-align: left;
+    border-bottom: 1px solid var(--border-color, #dee2e6);
+    font-size: 1rem; /* Чуть крупнее шрифт в таблице */
+    vertical-align: top; /* Выравнивание по верху для длинного текста */
+}
+.key-info-table th {
+    font-weight: 600;
+    color: var(--dark-gray, #6c757d);
+    width: 40%; /* Ширина колонки заголовков */
+    display: flex;
+    align-items: center; /* Иконка и текст по центру вертикально */
+}
+.icon-table {
+    margin-right: 0.7em;
+    color: var(--primary-green, #28a745);
+    opacity: 0.85;
+    width: 20px; /* Для выравнивания текста */
+    text-align: center;
+}
+.key-info-table td {
+    color: var(--text-color-dark, #343a40);
+    font-weight: 500; /* Значения пожирнее */
+}
+.key-info-table td strong { /* Для цены, если она в strong */
+    color: var(--primary-green, #28a745);
+}
+.key-info-table tr:last-child th,
+.key-info-table tr:last-child td {
+    border-bottom: none;
+}
+
+.offer-cta {
+    text-align: center;
+}
+/* Стили для .btn.btn--primary должны быть в основном style.css */
+/* Если нужно переопределить: */
+.offer-cta .btn--primary {
+    padding: 0.9em 2.2em;
+    font-size: 1.1rem; /* Кнопка поиска крупнее */
+    font-weight: 600;
+    /* background: linear-gradient(135deg, var(--primary-green), var(--dark-green)); */ /* Пример градиента */
+}
+.offer-cta .btn--primary i {
+    margin-right: 0.6em;
+}
+
+
+.key-info-tip {
+    background-color: var(--light-green, #e2f0e6);
+    padding: 1.2rem 1.5rem; /* Увеличены паддинги */
+    border-radius: 8px;
+    text-align: left;
+    font-size: 0.95rem;
+    color: var(--dark-green, #1e7e34);
+    border-left: 5px solid var(--primary-green, #28a745); /* Усиленная полоска слева */
+    line-height: 1.6;
+}
+.key-info-tip strong {
+    color: var(--primary-green, #28a745);
+    font-weight: 600;
+}
+.key-info-tip i {
+    margin-right: 0.5em;
+    font-size: 1.1em; /* Иконка лампочки крупнее */
+}
+
+/* Секция "Другие предложения" (стили для .promo-cards, .promo-card должны быть в style.css) */
+.other-offers-section {
+    padding: 3.5rem 0;
+    background-color: var(--light-gray-bg, #f8f9fa);
+    border-top: 1px solid var(--border-color, #dee2e6);
+}
+.other-offers-section h2 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    color: var(--dark-green, #1e7e34);
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+/* Адаптивность для offer-page */
+@media (max-width: 992px) {
+    .offer-hero h1 { font-size: 2.4rem; }
+    .offer-hero__subtitle { font-size: 1.2rem; }
+
+    .offer-details__container {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+    .offer-description h2 {
+        text-align: center; /* Заголовок по центру */
+        display: block; /* Чтобы бордер был на всю ширину */
+        border-bottom-style: solid;
+    }
+    .offer-key-info {
+        order: -1; /* Карточка с деталями теперь сверху на мобильных/планшетах */
+        margin-bottom: 2.5rem;
+    }
+    .key-info-card { padding: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .offer-hero { padding: 3rem 0; }
+    .offer-hero h1 { font-size: 2rem; }
+    .offer-hero__subtitle { font-size: 1.1rem; margin-bottom: 2rem;}
+    .offer-hero__placeholder-icon-wrapper { width: 80px; height: 80px; }
+    .offer-hero__placeholder-icon-wrapper i { font-size: 2.5rem; }
+    
+    .offer-details { padding: 2rem 0; }
+    .offer-description h2, .what-to-see-title, .key-info-card h2 { font-size: 1.6rem; } /* Уменьшаем заголовки */
+
+    .key-info-table th, .key-info-table td { font-size: 0.9rem; padding: 0.7rem 0.3rem;}
+    .offer-cta .btn--primary { font-size: 1rem; padding: 0.8em 1.8em;}
+}

@@ -1,0 +1,211 @@
+/* ==========================================================================
+   Стили для страницы регистрации (signup.html) - ОТДЕЛЬНЫЙ ФАЙЛ
+   ========================================================================== */
+
+/* --- Переменные (Аналогичны login-style.css для консистентности) --- */
+:root {
+    --primary-green: #28a745;
+    --dark-green: #1e7e34;
+    --light-green: #e2f0e6;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --medium-gray: #dee2e6;
+    --dark-gray: #6c757d;
+    --text-color: #343a40;
+    --danger-red: #dc3545;
+    --font-family: 'Poppins', sans-serif;
+}
+
+/* --- Базовые стили и центрирование (Аналогичны login-style.css) --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--light-gray);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* --- Контейнер формы регистрации --- */
+.signup-container {
+    background-color: var(--white);
+    padding: 2.5rem;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px; /* Немного шире для большего кол-ва полей */
+    text-align: center;
+}
+
+/* --- Логотип (Аналогичен login-style.css) --- */
+.signup-container .logo {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-green);
+    text-decoration: none;
+    margin-bottom: 1rem; /* Немного меньше отступ */
+    transition: color 0.3s ease;
+}
+.signup-container .logo:hover {
+    color: var(--dark-green);
+}
+
+/* --- Заголовок и подзаголовок --- */
+.signup-container h1 {
+    font-size: 1.6rem;
+    color: var(--dark-green);
+    margin-bottom: 0.5rem; /* Меньше отступ */
+    font-weight: 600;
+}
+
+.signup-container .subtitle {
+    font-size: 0.95rem;
+    color: var(--dark-gray);
+    margin-bottom: 2rem; /* Основной отступ после подзаголовка */
+}
+
+
+/* --- Форма и группы полей (Аналогичны login-style.css) --- */
+.signup-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 1.2rem; /* Немного уменьшим отступы между полями */
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--dark-gray);
+    margin-bottom: 0.5rem;
+}
+
+/* Стили для текстовых и парольных полей */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--medium-gray);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.15);
+}
+
+
+/* --- Стили для чекбокса и его лейбла --- */
+.form-group--checkbox {
+    display: flex;
+    align-items: flex-start; /* Выровнять по верху */
+    gap: 0.6rem; /* Расстояние между чекбоксом и текстом */
+    margin-top: 0.5rem; /* Небольшой отступ сверху */
+    margin-bottom: 1.5rem; /* Больший отступ снизу перед кнопкой */
+}
+
+.form-group--checkbox input[type="checkbox"] {
+    margin-top: 0.2em; /* Сдвинуть чуть вниз для лучшего выравнивания с текстом */
+    width: 1em;
+    height: 1em;
+    accent-color: var(--primary-green); /* Цвет галочки в современных браузерах */
+    flex-shrink: 0; /* Не сжимать чекбокс */
+}
+
+.form-group--checkbox label {
+    display: inline; /* Чтобы не переносился на новую строку */
+    font-size: 0.85rem; /* Мельче шрифт */
+    font-weight: normal;
+    color: var(--text-color);
+    margin-bottom: 0;
+    line-height: 1.4; /* Немного увеличить межстрочный интервал */
+}
+
+.form-group--checkbox label a {
+    color: var(--primary-green);
+    text-decoration: underline;
+}
+.form-group--checkbox label a:hover {
+    color: var(--dark-green);
+}
+
+
+/* --- Кнопка Регистрации --- */
+.btn-signup {
+    display: block;
+    width: 100%;
+    background-color: var(--primary-green);
+    color: var(--white);
+    border: none;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 0.5rem; /* Небольшой отступ сверху от последнего поля */
+}
+
+.btn-signup:hover {
+    background-color: var(--dark-green);
+}
+
+.btn-signup:active {
+    transform: translateY(1px);
+}
+
+/* --- Ссылка на страницу входа --- */
+.login-link {
+    margin-top: 2rem;
+    font-size: 0.9rem;
+}
+
+.login-link p {
+    color: var(--text-color);
+}
+
+.login-link a {
+    color: var(--primary-green);
+    font-weight: 600;
+    text-decoration: none;
+}
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* --- Адаптивность --- */
+@media (max-width: 480px) {
+    .signup-container {
+        padding: 2rem 1.5rem;
+    }
+
+    .signup-container h1 {
+        font-size: 1.4rem;
+    }
+
+     .signup-container .logo {
+        font-size: 1.8rem;
+    }
+
+     .form-group--checkbox label {
+        font-size: 0.8rem; /* Еще мельче на мобильных */
+    }
+}

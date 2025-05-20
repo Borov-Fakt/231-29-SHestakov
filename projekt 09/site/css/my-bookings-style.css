@@ -1,0 +1,229 @@
+/* css/my-bookings-style.css */
+
+/* Предполагаем, что основные переменные (:root) определены в css/style.css */
+/* :root {
+    --primary-green: #28a745;
+    --dark-green: #1e7e34;
+    --accent-green: #90ee90; // Допустим, используется для кнопок
+    --text-color: #343a40;
+    --text-color-dark: #343a40; // Используем ваш var(--text-color)
+    --dark-gray: #6c757d;
+    --medium-gray: #dee2e6;
+    --light-gray: #f0f0f0;      // Использовался в profile.css
+    --light-gray-bg: #f8f9fa; // Фон страницы
+    --white: #ffffff;
+    --danger-red: #dc3545;      // Для статусов
+    --danger-red-light: #f8d7da;
+    --font-family: 'Poppins', sans-serif; */
+    /* Цвета статусов (могут быть другие) */
+/*    --status-confirmed-bg: #cfe2ff; 
+    --status-confirmed-text: #084298;
+    --status-ticketed-bg: #d1e7dd;
+    --status-ticketed-text: #0f5132;
+    --status-pending-bg: #fff3cd;
+    --status-pending-text: #664d03;
+    --status-cancelled-bg: #e9ecef;
+    --status-cancelled-text: #495057;
+    --status-error-bg: #f8d7da;
+    --status-error-text: #721c24; */
+/* } */
+
+body { /* Если нужно переопределить что-то из style.css для этой страницы */
+    background-color: var(--light-gray-bg, #f8f9fa);
+}
+
+/* Общий контейнер для основного контента страницы */
+.main-content-my-bookings {
+    padding: 2rem 0 3rem 0;
+}
+
+.page-content-container { /* Аналог вашего .profile-page-container для консистентности */
+    max-width: 900px; /* Можно шире для списка бронирований */
+    margin: 0 auto; 
+    /* background-color: var(--white); */ /* Карточки будут на фоне .main-content */
+    /* border-radius: 12px; */ /* Если весь контент в одном блоке */
+    /* box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08); */
+    /* padding: 2.5rem; */ /* Если нужен внутренний отступ */
+}
+
+
+.page-title {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--dark-green, #1e7e34);
+    margin-bottom: 2.5rem;
+    font-weight: 700;
+}
+
+/* Сообщения */
+.action-message {
+    padding: 1rem; margin: 0 auto 2rem auto; border-radius: 6px;
+    text-align: center; font-weight: 500; max-width: 700px;
+    border: 1px solid transparent;
+}
+.action-message.success { background-color: var(--success-bg, #d1e7dd); color: var(--success-text, #0f5132); border-color: var(--success-border, #badbcc); }
+.action-message.error { background-color: var(--error-bg, #f8d7da); color: var(--error-text, #721c24); border-color: var(--error-border, #f5c6cb); }
+.action-message.info { background-color: var(--info-bg, #cce5ff); color: var(--info-text, #004085); border-color: var(--info-border, #b8daff); }
+
+/* Плейсхолдер */
+.no-bookings-placeholder {
+    text-align: center; padding: 3rem 1rem;
+    background-color: var(--white, #fff);
+    border: 2px dashed var(--medium-gray, #dee2e6); /* Как в вашем profile */
+    border-radius: 8px; max-width: 600px; margin: 2rem auto;
+}
+.no-bookings-placeholder .empty-icon {
+    font-size: 3.5rem; color: var(--medium-gray, #adb5bd);
+    margin-bottom: 1.5rem; display: block;
+}
+.no-bookings-placeholder p { font-size: 1.1rem; color: var(--dark-gray, #6c757d); margin-bottom: 2rem; font-style: italic; }
+/* Кнопка в плейсхолдере .btn--primary наследует стили */
+
+
+/* Список карточек бронирований */
+.bookings-list {
+    display: grid;
+    gap: 1.8rem; /* Увеличим отступ между карточками */
+}
+
+.booking-item {
+    background-color: var(--white, #fff);
+    border: 1px solid var(--medium-gray, #dee2e6);
+    border-radius: 10px; /* Скругляем как в profile */
+    padding: 1.8rem; /* Увеличим внутренний паддинг */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.07); /* Тень как в profile */
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    border-left-width: 6px; /* Полоска статуса чуть толще */
+    position: relative; /* Для возможного абсолютного позиционирования элементов внутри */
+}
+.booking-item:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transform: translateY(-3px); /* Небольшой подъем */
+}
+
+/* Цвета полоски статуса */
+.booking-status-pending_payment { border-left-color: #ffc107; } /* Желтый */
+.booking-status-confirmed { border-left-color: #17a2b8; }    /* Бирюзовый */
+.booking-status-ticketed { border-left-color: var(--primary-green, #28a745); } /* Зеленый */
+.booking-status-cancelled_by_user, .booking-status-cancelled_by_airline { border-left-color: var(--dark-gray, #6c757d); }
+.booking-status-payment_failed, .booking-status-error { border-left-color: var(--danger-red, #dc3545); }
+.booking-status-completed { border-left-color: var(--medium-gray, #adb5bd); }
+
+
+.booking-item__header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.2rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--light-gray, #f0f0f0); 
+}
+.booking-item__pnr { font-size: 1.1rem; color: var(--text-color, #343a40); }
+.booking-item__pnr strong { font-weight: 700; color: var(--primary-green, #28a745); }
+
+.booking-item__status { /* Бейдж статуса */
+    font-size: 0.8rem; font-weight: 600;
+    padding: 0.3em 0.9em; border-radius: 20px;
+    color: var(--white, #fff); text-transform: uppercase; letter-spacing: 0.5px;
+}
+/* Конкретные цвета для бейджей статусов (соответствуют цветам полоски) */
+.booking-item__status--pending_payment { background-color: #ffc107; }
+.booking-item__status--confirmed { background-color: #17a2b8; }
+.booking-item__status--ticketed { background-color: var(--primary-green, #28a745); }
+.booking-item__status--cancelled_by_user,
+.booking-item__status--cancelled_by_airline { background-color: var(--dark-gray, #6c757d); }
+.booking-item__status--payment_failed,
+.booking-item__status--error { background-color: var(--danger-red, #dc3545); }
+.booking-item__status--completed { background-color: var(--medium-gray, #adb5bd); }
+
+
+.booking-item__route {
+    display: flex; align-items: center; justify-content: space-between; /* Растягиваем по ширине */
+    margin-bottom: 1.5rem; padding: 1.2rem 1rem;
+    background-color: var(--light-gray-bg, #f8f9fa); border-radius: 6px;
+}
+.route-point { text-align: center; flex: 1; /* Равномерное распределение */ }
+.route-point__city-code {
+    display: block; font-size: 1.7rem; font-weight: 600;
+    color: var(--text-color-dark, #343a40); line-height: 1;
+}
+.route-point__city-name { display: block; font-size: 0.85rem; color: var(--dark-gray, #6c757d); margin-top: 0.2rem; }
+.route-arrow {
+    font-size: 1.6rem; color: var(--primary-green, #28a745);
+    flex-shrink: 0; margin: 0 1rem; /* Отступы по бокам стрелки */
+}
+.route-arrow i { transform: translateY(1px); }
+
+
+.booking-item__info {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); /* Гибкая сетка */
+    gap: 0.8rem 1.2rem; margin-bottom: 1.5rem;
+}
+.info-block { font-size: 0.9rem; }
+.info-block__label {
+    display: block; color: var(--dark-gray, #6c757d); font-weight: 500;
+    margin-bottom: 0.3rem; display: flex; align-items: center;
+}
+.info-block__label i { margin-right: 0.6em; opacity: 0.8; color: var(--primary-green); } /* Зеленые иконки */
+.info-block__value { font-weight: 500; color: var(--text-color-dark, #343a40); word-break: break-word;}
+.info-block__value small { font-size: 0.85em; color: var(--dark-gray); }
+.info-block--price .info-block__label { font-weight: 600; }
+.info-block--price .info-block__value {
+    font-size: 1.25rem; font-weight: 700;
+    color: var(--primary-green, #28a745);
+}
+
+
+.booking-item__actions {
+    display: flex; gap: 0.8rem; margin-top: 1.5rem; padding-top: 1.2rem;
+    border-top: 1px solid var(--light-gray, #f0f0f0);
+    flex-wrap: wrap; justify-content: flex-end; /* Кнопки справа */
+}
+/* Стили кнопок btn, btn--secondary, btn--outline наследуются из style.css,
+   добавим или уточним btn--small */
+.btn--small {
+    padding: 0.6em 1.2em; /* Чуть больше для кликабельности */
+    font-size: 0.85rem;
+    font-weight: 600; /* Как основные кнопки */
+    letter-spacing: 0.3px;
+}
+.btn--small i { margin-right: 0.5em; }
+/* Уточнение для btn--outline если нужно */
+.btn--outline.btn--small { /* Для маленькой контурной кнопки */
+   /* Ваши специфичные стили, если нужно */
+}
+
+
+.booking-item__created-date {
+    font-size: 0.8rem; color: var(--medium-gray, #adb5bd);
+    text-align: right; margin-top: 1rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .page-title { font-size: 1.9rem; margin-bottom: 2rem; }
+    .booking-item { padding: 1.2rem; }
+    .booking-item__header {
+        flex-direction: column; align-items: flex-start; gap: 0.6rem;
+        padding-bottom: 0.6rem; margin-bottom: 0.8rem;
+    }
+    .booking-item__status { align-self: flex-start; font-size:0.75rem; padding: 0.25em 0.7em;}
+    
+    .booking-item__route { 
+        flex-direction: column; align-items: center; gap: 0.5rem;
+        padding: 1rem 0.5rem; margin-bottom: 1.2rem;
+    }
+    .route-point { flex-basis: auto; } /* Сбрасываем basis */
+    .route-point__city-code { font-size: 1.6rem; }
+    .route-arrow { transform: rotate(90deg); margin: 0.5rem 0;}
+    
+    .booking-item__info { grid-template-columns: 1fr; gap: 1rem; }
+    .info-block--price .info-block__value { font-size: 1.15rem; }
+
+    .booking-item__actions { justify-content: center; }
+}
+
+@media (max-width: 480px) {
+     .page-content-container { padding: 0 15px; /* Для очень маленьких убираем паддинг от общего контейнера */ }
+     .booking-item { padding: 1rem; }
+     .route-point__city-code { font-size: 1.4rem; }
+     .route-point__city-name { font-size: 0.8rem; }
+     .booking-item__created-date { text-align: left; margin-top: 0.8rem; }
+}

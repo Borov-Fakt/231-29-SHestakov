@@ -1,0 +1,434 @@
+/* ==========================================================================
+   css/admin-style.css - ПОЛНАЯ ВЕРСИЯ С ВАШИМИ ДОПОЛНЕНИЯМИ ДЛЯ МИНИАТЮР
+   ========================================================================== */
+
+/* --- Переменные --- */
+:root {
+    --admin-primary-bg: #2c3e50; 
+    --admin-secondary-bg: #34495e; 
+    --admin-text-color: #ecf0f1;  
+    --admin-accent-color: #3498db; 
+    /* --admin-accent-color: #28a745; /* Air GO Green */
+
+    --content-bg: #f4f6f9;       
+    --widget-bg: #ffffff;        
+    --text-color-dark: #343a40;   
+    --border-color: #dee2e6;      
+    --medium-gray: #adb5bd; 
+    --light-gray-bg: #f8f9fa; 
+
+    --font-family: 'Poppins', sans-serif;
+
+    --primary-green: #28a745;
+    --dark-green: #1e7e34;
+    --light-gray: #f0f0f0; 
+    --dark-gray: #6c757d;
+    --white: #ffffff;
+
+    --success-bg: #d1e7dd; 
+    --success-text: #0f5132;
+    --success-border: #badbcc;
+    --error-bg: #f8d7da;
+    --error-text: #721c24; 
+    --error-border: #f5c6cb;
+    --info-bg: #cce5ff;
+    --info-text: #004085;
+    --info-border: #b8daff;
+    --warning-orange: #e67e22; 
+    --warning-bg: #fff3cd;
+    --warning-text: #856404;
+    --warning-border: #ffeeba;
+}
+
+/* --- Базовые стили --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-family); background-color: var(--content-bg); color: var(--text-color-dark); line-height: 1.6; overflow-x: hidden; }
+a { text-decoration: none; color: var(--admin-accent-color); }
+
+/* --- Общий контейнер --- */
+.admin-wrapper { display: flex; min-height: 100vh; }
+
+/* --- Сайдбар --- */
+.admin-sidebar {
+    width: 260px; background-color: var(--admin-primary-bg); color: var(--admin-text-color);
+    display: flex; flex-direction: column; flex-shrink: 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1); transition: width 0.3s ease;
+}
+.sidebar-header { padding: 1.5rem 1.2rem; text-align: center; border-bottom: 1px solid var(--admin-secondary-bg); }
+.sidebar-header .logo { font-size: 1.6rem; font-weight: 700; color: var(--admin-text-color); }
+.sidebar-header .admin-tag {
+    font-size: 0.8rem; background-color: var(--admin-accent-color); color: var(--white);
+    padding: 0.2em 0.5em; border-radius: 4px; vertical-align: middle; margin-left: 0.5em;
+}
+.sidebar-nav { flex-grow: 1; padding-top: 1rem; }
+.sidebar-nav ul { list-style: none; }
+.sidebar-nav li a {
+    display: flex; align-items: center; gap: 0.8em; padding: 0.9rem 1.5rem;
+    color: var(--admin-text-color); font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, padding-left 0.2s ease, border-left-color 0.2s ease;
+    border-left: 4px solid transparent;
+}
+.sidebar-nav li a i { width: 20px; text-align: center; opacity: 0.8; transition: opacity 0.2s ease; }
+.sidebar-nav li:hover a,
+.sidebar-nav li.active a {
+    background-color: var(--admin-secondary-bg); color: var(--white);
+    border-left-color: var(--admin-accent-color);
+    padding-left: calc(1.5rem - 4px); 
+}
+.sidebar-nav li.active a { font-weight: 600; }
+.sidebar-nav li:hover a i,
+.sidebar-nav li.active a i { opacity: 1; }
+.sidebar-footer { padding: 1.5rem; border-top: 1px solid var(--admin-secondary-bg); text-align: center; }
+.sidebar-footer .logout-link { color: var(--admin-text-color); font-weight: 500; opacity: 0.8; transition: opacity 0.2s ease; }
+.sidebar-footer .logout-link:hover { opacity: 1; }
+.sidebar-footer .logout-link i { margin-right: 0.5em; }
+
+/* --- Основной контент --- */
+.admin-main-content { flex-grow: 1; padding: 1.5rem 2rem; overflow-y: auto; }
+.admin-content-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);
+}
+.admin-content-header h1 { font-size: 1.8rem; color: var(--text-color-dark); font-weight: 600; margin:0; }
+.admin-user-info span { font-weight: 500; color: var(--dark-gray); }
+.admin-user-info span i { margin-right: 0.5em; color: var(--admin-accent-color); }
+
+/* --- Вкладки --- */
+.admin-tabs-content .tab-pane {
+    display: none; background-color: var(--widget-bg); padding: 2rem;
+    border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    animation: fadeIn 0.5s ease-in-out; min-height: 300px; 
+}
+.admin-tabs-content .tab-pane.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+.tab-pane h2 {
+    font-size: 1.5rem; color: var(--text-color-dark); margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem; border-bottom: 1px solid var(--border-color); font-weight: 600;
+}
+.tab-pane > p { margin-bottom: 1.5rem; color: var(--dark-gray); }
+
+/* Сообщения в админке */
+.admin-message {
+    padding: 1rem; margin-bottom: 1.5rem; border-radius: 5px;
+    font-weight: 500; text-align: center; border: 1px solid transparent;
+}
+.admin-message.success { background-color: var(--success-bg); color: var(--success-text); border-color: var(--success-border); }
+.admin-message.error { background-color: var(--error-bg); color: var(--error-text); border-color: var(--error-border); }
+.admin-message.info { background-color: var(--info-bg); color: var(--info-text); border-color: var(--info-border); }
+
+/* Плейсхолдер контента */
+.placeholder-content {
+    text-align: center; padding: 3rem 1rem; border: 2px dashed var(--border-color);
+    border-radius: 6px; color: var(--dark-gray); background-color: var(--light-gray-bg);
+    margin-bottom: 1.5rem;
+}
+.placeholder-content i { color: var(--medium-gray); margin-bottom: 1rem; display: block; }
+
+/* Формы */
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; font-weight: 500; margin-bottom: 0.5rem; color: var(--text-color-dark); }
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"],
+.form-group input[type="password"],
+.form-group input[type="file"], /* Добавил стили для input file */
+.form-group select,
+.form-group textarea {
+    width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color);
+    border-radius: 4px; font-size: 0.95rem; background-color: var(--white);
+    color: var(--text-color-dark);
+}
+.form-group input[type="file"] { /* Специфичный паддинг для поля файла */
+    padding: 0.5rem 0.75rem;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none; border-color: var(--admin-accent-color);
+    box-shadow: 0 0 0 2px color-mix(in srgb, var(--admin-accent-color) 20%, transparent);
+}
+.form-group input[readonly] { background-color: var(--light-gray-bg); cursor: not-allowed; }
+.form-group small.form-text.text-muted { font-size: 0.8em; color: var(--dark-gray); margin-top: 0.25rem; display: block;}
+
+.profile-form-admin .btn,
+.admin-actions-bar .btn,
+.filter-form .btn { margin-top: 0; } 
+
+.profile-form-admin .btn { margin-right: 0.5rem; }
+.profile-form-admin .btn:last-child { margin-right: 0; }
+
+/* Кнопки */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+    padding: 0.7em 1.4em; border-radius: 5px; font-weight: 500; font-size: 0.9rem;
+    cursor: pointer; text-decoration: none; border: 1px solid transparent;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05); 
+}
+.btn:hover {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transform: translateY(-1px);
+}
+.btn:active { 
+    transform: translateY(0px); 
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); 
+}
+.btn-primary { background-color: var(--admin-accent-color); color: var(--white); }
+.btn-primary:hover { background-color: color-mix(in srgb, var(--admin-accent-color) 85%, black); }
+.btn-secondary { background-color: var(--light-gray-bg); color: var(--text-color-dark); border-color: var(--border-color); } 
+.btn-secondary:hover { background-color: #e2e6ea; border-color: var(--dark-gray); } 
+.btn-danger { background-color: var(--error-bg); color: var(--error-text); border-color: var(--error-border); }
+.btn-danger:hover { background-color: color-mix(in srgb, var(--error-bg) 85%, black); border-color: color-mix(in srgb, var(--error-border) 85%, black); }
+.btn-link {
+    background: none; border: none; box-shadow: none;
+    color: var(--admin-accent-color); text-decoration: underline;
+    padding: 0.6rem 0.5rem; font-size: 0.9rem;
+}
+.btn-link:hover { color: color-mix(in srgb, var(--admin-accent-color) 80%, black); background:none; transform: none; box-shadow:none;}
+
+
+/* --- Стили для вкладки Управления Пользователями и Спецпредложениями (общие для таблиц) --- */
+.admin-actions-bar {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem;
+}
+.filter-form { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+.filter-form input[type="text"], .filter-form select {
+    padding: 0.6rem; font-size: 0.9rem; border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+.filter-form input[type="text"] { min-width: 180px; }
+.filter-form select { min-width: 150px; }
+.filter-form .btn { padding: 0.6rem 1rem; font-size: 0.9rem; }
+
+
+.table-responsive-wrapper {
+    width: 100%;
+    overflow-x: auto; 
+    margin-bottom: 1.5rem; 
+    -webkit-overflow-scrolling: touch; 
+}
+
+.admin-table {
+    width: 100%; border-collapse: collapse; 
+    background-color: var(--widget-bg); box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-radius: 6px; overflow: hidden; 
+}
+.admin-table th, .admin-table td { padding: 0.9rem 1rem; text-align: left; border-bottom: 1px solid var(--border-color); vertical-align: middle; /* Для лучшего выравнивания с картинкой */ }
+.admin-table thead th {
+    background-color: color-mix(in srgb, var(--content-bg) 70%, var(--widget-bg)); 
+    font-weight: 600; color: var(--text-color-dark); white-space: nowrap;
+    position: sticky; top: 0; 
+    z-index: 10; /* Повышен z-index для заголовков над контентом при скролле */
+}
+.admin-table tbody tr:hover { background-color: #f9f9f9; }
+.admin-table td.actions-cell { white-space: nowrap; text-align: right; padding-right: 0.5rem; }
+
+/* --- ВАШИ ВСТАВЛЕННЫЕ СТИЛИ ДЛЯ МИНИАТЮР --- */
+.admin-table th:nth-child(2), /* Колонка "Изобр." (применяется если вторая колонка - изображение) */
+.admin-table td:nth-child(2) {
+    /* Эти стили будут применяться ко второй колонке ЛЮБОЙ таблицы с классом .admin-table. 
+       Если для разных таблиц нужны разные колонки для изображений, 
+       лучше использовать более специфичные селекторы, например, .special-offers-table td:nth-child(2) */
+    width: 80px; 
+    text-align: center;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.admin-table-image-preview {
+    max-width: 60px;
+    max-height: 40px; 
+    height: auto;
+    border-radius: 3px;
+    object-fit: cover; 
+    border: 1px solid var(--border-color);
+    display: inline-block; /* Чтобы не растягивало ячейку, если вдруг изображение большое до загрузки CSS */
+    vertical-align: middle;
+}
+
+.no-image-placeholder i {
+    font-size: 1.5rem; /* Был 1.5rem, оставляем */
+    color: var(--medium-gray);
+    line-height: 40px; /* Высота такая же как у max-height изображения */
+}
+/* --- КОНЕЦ ВАШИХ ВСТАВЛЕННЫХ СТИЛЕЙ --- */
+
+
+.action-icon {
+    display: inline-flex; justify-content: center; align-items: center;
+    width: 32px; height: 32px; border-radius: 50%; 
+    margin: 0 0.2rem; color: var(--dark-gray); font-size: 1rem; 
+    transition: color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+.action-icon:hover {
+    transform: scale(1.1);
+    background-color: var(--light-gray-bg); 
+}
+.action-icon.edit:hover { color: var(--admin-accent-color); }
+.action-icon.delete:hover { color: var(--error-text); }
+.action-icon.enable:hover { color: var(--primary-green); }
+.action-icon.disable:hover { color: var(--warning-orange); }
+
+.status-badge {
+    padding: 0.25em 0.6em; font-size: 0.8rem; font-weight: 600;
+    border-radius: 10px; display: inline-block; line-height: 1.2;
+    border: 1px solid transparent; 
+}
+.status-active { background-color: var(--success-bg); color: var(--success-text); border-color: var(--success-border);}
+.status-inactive { background-color: var(--error-bg); color: var(--error-text); border-color: var(--error-border);}
+.status-admin { background-color: var(--info-bg); color: var(--info-text); border-color: var(--info-border); }
+
+/* Стили для статусных бейджей бронирований */
+.status-badge.status-booking-pending_payment { background-color: var(--warning-bg); color: var(--warning-text); border-color: var(--warning-border); }
+.status-badge.status-booking-confirmed { background-color: #cfe2ff; color: #084298; border-color: #b6d4fe; }
+.status-badge.status-booking-ticketed { background-color: var(--success-bg); color: var(--success-text); border-color: var(--success-border); }
+.status-badge.status-booking-cancelled_by_user,
+.status-badge.status-booking-cancelled_by_airline { background-color: #e9ecef; color: #495057; border-color: #ced4da; }
+.status-badge.status-booking-payment_failed,
+.status-badge.status-booking-error { background-color: var(--error-bg); color: var(--error-text); border-color: var(--error-border); }
+.status-badge.status-booking-completed { background-color: var(--admin-secondary-bg); color: var(--admin-text-color); border-color: var(--admin-primary-bg); }
+
+/* Стили для таблицы бронирований (уже были, проверим) */
+.bookings-table th, .bookings-table td { font-size: 0.85rem; }
+.bookings-table td.passenger-names-cell { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.bookings-table .route-iata { font-weight: 600; }
+.bookings-table .route-arrow-table { margin: 0 0.3em; color: var(--dark-gray); }
+.action-icon.view:hover { color: #0dcaf0; }
+.action-icon.ticket:hover { color: var(--primary-green); }
+
+
+.pagination-nav { margin-top: 1.5rem; text-align: center; }
+.pagination { list-style: none; padding: 0; display: inline-flex; gap: 0.3rem; align-items: center; }
+.pagination li a, .pagination li span {
+    display: inline-block; padding: 0.5rem 0.8rem; color: var(--admin-accent-color);
+    border: 1px solid var(--border-color); border-radius: 4px;
+    text-decoration: none; transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.pagination li a:hover {
+    background-color: color-mix(in srgb, var(--admin-accent-color) 10%, transparent);
+    border-color: var(--admin-accent-color);
+}
+.pagination li.active a {
+    background-color: var(--admin-accent-color); color: var(--white);
+    border-color: var(--admin-accent-color); font-weight: 600;
+}
+.pagination li span { color: var(--dark-gray); border: none; padding: 0.5rem 0.3rem; }
+
+/* Стили для fieldset и legend (уже были, проверим) */
+fieldset {
+    border: 1px solid var(--border-color);
+    padding: 1.5rem; 
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+}
+legend {
+    padding: 0 0.5em; 
+    font-weight: 600; /* Сделаем жирнее для лучшего вида */
+    color: var(--dark-gray);
+    font-size: 1.1em; 
+    margin-bottom: 1rem;
+}
+fieldset .form-group:last-child { margin-bottom: 0; }
+
+/* Стили для детальной страницы бронирования (уже были, проверим) */
+.detail-section { margin-bottom: 2.5rem; }
+.detail-section h2 { 
+    font-size: 1.4rem; color: var(--primary-green); 
+    margin-bottom: 1.5rem; 
+    padding-bottom: 0.7rem; 
+    border-bottom: 2px solid var(--light-gray-bg);
+    display: flex; align-items: center; gap: 0.7em; 
+}
+.detail-section h2 i { opacity: 0.8; font-size: 0.9em; }
+.info-grid-details { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 1.2rem; 
+}
+.info-item-detail { 
+    background-color: var(--light-gray-bg); 
+    padding: 0.8rem 1.2rem; 
+    border-radius: 5px; 
+    border-left: 3px solid var(--admin-accent-color); 
+}
+.info-item-detail label { 
+    display: block; font-size: 0.8rem; 
+    color: var(--dark-gray); margin-bottom: 0.3rem; 
+    font-weight: 500; text-transform: uppercase; 
+}
+.info-item-detail .value { font-size: 0.95rem; color: var(--text-color-dark); font-weight: 500; }
+.info-item-detail .value .status-badge { margin-top: 0; }
+.passenger-card, .segment-card {
+    border: 1px solid var(--border-color); border-radius: 6px;
+    padding: 1.2rem 1.5rem; margin-bottom: 1.2rem; 
+    background-color: var(--light-gray-bg); 
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.passenger-card h3, .segment-card h3 {
+    font-size: 1.2rem; margin-top: 0; margin-bottom: 1rem; 
+    color: var(--dark-green); border-bottom: 1px solid var(--medium-gray); 
+    padding-bottom: 0.7rem; display: flex; align-items: center; gap: 0.5em;
+}
+.passenger-card h3 i, .segment-card h3 i { font-size: 0.9em; opacity: 0.7;}
+.passenger-info-grid, .segment-info-grid { 
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    gap: 0.6rem 1.2rem; 
+}
+.info-pair { margin-bottom: 0.5rem;}
+.info-pair strong { font-weight: 600; color: var(--dark-gray); display: block; font-size: 0.8em; text-transform: uppercase; margin-bottom: 0.1rem; }
+.info-pair span { font-weight: 500; font-size: 0.95rem; word-break: break-word; }
+.segment-route { font-size: 1.15rem; font-weight: 600; margin-bottom: 0.5rem; display: inline-block; }
+.segment-route .route-arrow-table { font-size: 1rem; margin: 0 0.5em; color: var(--dark-gray); }
+.segment-card h3 .segment-route { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.layover-info { text-align: center; padding: 0.8rem 0; color: var(--dark-gray); font-style: italic; font-size: 0.9em; border-top: 1px dashed var(--border-color); border-bottom: 1px dashed var(--border-color); margin: 0.8rem 0; }
+.layover-info i { margin-right: 0.4em;}
+.json-details { background-color: #2d2d2d; color: #f0f0f0; padding: 1rem; border-radius: 4px; overflow-x: auto; font-family: monospace; font-size: 0.85em; white-space: pre-wrap; margin-top:1rem; max-height: 300px; border: 1px solid #444; }
+.btn-container-details { text-align: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border-color); }
+.btn-container-details .btn { margin: 0 0.5rem; }
+
+
+/* --- Адаптивность --- */
+/* ... (ваша секция @media остается без изменений) ... */
+@media (max-width: 992px) {
+    .admin-sidebar { width: 220px; }
+    .sidebar-nav li a { padding: 0.8rem 1.2rem; font-size: 0.95rem; }
+    .admin-main-content { padding: 1.5rem; }
+    .admin-content-header h1 { font-size: 1.6rem; }
+}
+@media (max-width: 768px) {
+    .admin-wrapper { flex-direction: column; }
+    .admin-sidebar {
+        width: 100%; height: auto; flex-direction: row; align-items: center;
+        justify-content: space-between; padding: 0 1rem;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        position: sticky; top: 0; z-index: 1000;
+    }
+    .sidebar-header { padding: 0.8rem 0; border-bottom: none; }
+    .sidebar-nav { flex-grow: 0; padding-top: 0; display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .sidebar-nav ul { display: flex; white-space: nowrap; }
+    .sidebar-nav li a { padding: 0.8rem 1rem; border-left: none; border-bottom: 3px solid transparent; }
+    .sidebar-nav li:hover a,
+    .sidebar-nav li.active a {
+        background-color: transparent; color: var(--admin-accent-color);
+        border-bottom-color: var(--admin-accent-color); padding-left: 1rem; 
+    }
+    .sidebar-nav li a i { display: inline-block; margin-right: 0.3em; }
+    .sidebar-footer { display: none; }
+    
+    .table-responsive-wrapper { /* Уже был */ }
+    .admin-actions-bar { flex-direction: column; align-items: stretch; }
+    .filter-form { width: 100%; flex-direction: column; align-items: stretch; }
+    .filter-form input[type="text"], .filter-form select, .filter-form button, .filter-form .btn-link { width: 100%; margin-bottom: 0.5rem; }
+    .filter-form .btn-link { text-align: center; }
+    
+    .pagination-nav { font-size: 0.9rem; }
+    .pagination li a, .pagination li span { padding: 0.4rem 0.6rem; }
+}
+@media (max-width: 480px) {
+    .admin-main-content { padding: 1rem; }
+    .admin-tabs-content .tab-pane { padding: 1.5rem 1rem; }
+    .sidebar-nav li a { padding: 0.7rem 0.8rem; }
+    .sidebar-nav li a span.nav-text { display: none; } 
+}

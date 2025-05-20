@@ -1,0 +1,110 @@
+/* css/booking-success-style.css */
+
+/* :root { /* Переменные наследуются из style.css */ /* } */
+
+body {
+    background-color: var(--light-gray-bg, #f8f9fa);
+}
+
+.main-booking-success {
+    display: flex;
+    align-items: center; /* Центрируем по вертикали */
+    justify-content: center;
+    min-height: calc(100vh - 150px); /* Примерная высота за вычетом шапки и подвала */
+    padding: 2rem 0;
+}
+
+.success-confirmation-box {
+    background-color: var(--white, #fff);
+    padding: 2.5rem 3rem; /* Больше паддинги */
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    text-align: center;
+    max-width: 650px;
+    width: 100%;
+    border-top: 5px solid var(--primary-green, #28a745); /* Зеленая полоска сверху */
+}
+
+.success-icon {
+    font-size: 4.5rem; /* Большая иконка */
+    color: var(--primary-green, #28a745);
+    margin-bottom: 1.5rem;
+    animation: bounceIn 0.8s ease-out;
+}
+
+@keyframes bounceIn { /* Простая анимация для иконки */
+    0% { transform: scale(0.5); opacity: 0; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.success-confirmation-box h1 {
+    font-size: 2rem; /* Крупный заголовок */
+    color: var(--dark-green, #1e7e34);
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.pnr-info {
+    font-size: 1.2rem;
+    color: var(--text-color-dark, #343a40);
+    margin-bottom: 1.5rem;
+    background-color: var(--light-gray-bg, #f8f9fa);
+    padding: 0.8rem;
+    border-radius: 6px;
+    border: 1px dashed var(--medium-gray, #dee2e6);
+}
+.pnr-info strong {
+    font-size: 1.3em; /* PNR крупнее */
+    color: var(--primary-green, #28a745);
+    font-weight: 700;
+    letter-spacing: 1px; /* Небольшая разрядка */
+}
+
+.confirmation-email-info, .next-steps-info {
+    font-size: 1rem;
+    color: var(--dark-gray, #6c757d);
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+.confirmation-email-info strong {
+    color: var(--text-color-dark, #343a40);
+    font-weight: 600;
+}
+
+.next-steps-info a {
+    color: var(--admin-accent-color, #3498db); /* Используем синий акцент для ссылок в тексте */
+    font-weight: 500;
+    text-decoration: underline;
+}
+.next-steps-info a:hover {
+    color: color-mix(in srgb, var(--admin-accent-color, #3498db) 80%, black);
+}
+
+.success-actions {
+    margin-top: 2.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap; /* Перенос кнопок на мобильных */
+}
+/* .btn--primary и .btn--secondary наследуют стили из style.css */
+.success-actions .btn i {
+    margin-right: 0.5em;
+}
+
+@media (max-width: 768px) {
+    .main-booking-success {
+        align-items: flex-start; /* На мобильных блок может быть выше */
+        padding-top: 1.5rem;
+    }
+    .success-confirmation-box {
+        padding: 2rem 1.5rem;
+    }
+    .success-confirmation-box h1 { font-size: 1.7rem; }
+    .success-icon { font-size: 3.5rem; }
+    .pnr-info { font-size: 1.1rem; }
+    .pnr-info strong { font-size: 1.2em; }
+    .success-actions { flex-direction: column; }
+    .success-actions .btn { width: 100%; } /* Кнопки на всю ширину */
+}

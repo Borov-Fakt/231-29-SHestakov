@@ -1,0 +1,319 @@
+/* css/style.css - ОБНОВЛЕННЫЙ с вашими дополнениями для изображений в карточках */
+
+/* Сброс стилей и базовые настройки */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-green: #28a745;
+    --dark-green: #1e7e34;
+    --light-green: #e2f0e6;
+    --accent-green: #90ee90;
+    --white: #ffffff;
+    --light-gray: #f8f9fa; 
+    --light-gray-bg: #f8f9fa; 
+    --medium-gray: #dee2e6;
+    --dark-gray: #6c757d;
+    --text-color: #343a40;
+    --text-color-dark: #343a40; 
+    --text-light: #ffffff;
+    --font-family: 'Poppins', sans-serif;
+    --border-color: #dee2e6; 
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--light-gray-bg); 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-green);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--dark-green);
+}
+
+h1, h2, h3 {
+    margin-bottom: 1rem;
+    color: var(--dark-green);
+}
+
+h1 { font-size: 2.5rem; line-height: 1.2; }
+h2 { font-size: 2rem; text-align: center; margin-bottom: 2rem; } 
+
+/* --- Header --- */
+.header {
+    background-color: var(--white);
+    padding: 1rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-green);
+}
+.header__logo:hover { color: var(--dark-green); }
+.header__nav ul { list-style: none; display: flex; }
+.header__nav li { margin-left: 1.5rem; }
+.header__nav a { color: var(--dark-gray); font-weight: 500; }
+.header__nav a:hover { color: var(--primary-green); }
+
+/* --- Hero Section --- */
+.hero {
+    background: linear-gradient(rgba(0, 80, 0, 0.65), rgba(0, 80, 0, 0.65));
+    background-color: var(--dark-green); 
+    color: var(--text-light);
+    padding: 5rem 0; 
+    text-align: center;
+}
+.hero h1 { color: var(--text-light); margin-bottom: 0.5rem; }
+.hero__subtitle { font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.9; }
+
+/* --- Search Form --- */
+.search-form {
+    background-color: rgba(255, 255, 255, 0.95); padding: 2rem; border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); max-width: 1000px; margin: 0 auto;
+}
+.search-form__options { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 1.5rem; }
+.search-form__options label { color: var(--text-color); font-weight: 500; cursor: pointer; }
+.search-form__options input[type="radio"] { margin-right: 0.3rem; accent-color: var(--primary-green); }
+.search-form__fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+.form-group { display: flex; flex-direction: column; }
+.form-group label { font-size: 0.85rem; color: var(--dark-gray); margin-bottom: 0.3rem; text-align: left; }
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group select { padding: 0.8rem; border: 1px solid var(--medium-gray); border-radius: 4px; font-size: 1rem; font-family: var(--font-family); width: 100%; }
+.form-group input:focus,
+.form-group select:focus { outline: none; border-color: var(--primary-green); box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.2); }
+.form-group input[type="date"] { color: var(--dark-gray); } 
+.form-group input[type="date"]:valid { color: var(--text-color); } 
+.search-form__button {
+    background-color: var(--primary-green); color: var(--text-light); border: none; padding: 1rem 2.5rem;
+    font-size: 1.1rem; font-weight: 600; border-radius: 4px; cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; display: inline-block;
+}
+.search-form__button:hover { background-color: var(--dark-green); transform: translateY(-2px); }
+
+
+/* --- НОВЫЕ/ОБНОВЛЕННЫЕ СТИЛИ для Promo Section --- */
+.promo-section {
+    padding: 4rem 0; 
+    background-color: var(--white); 
+}
+
+.promo-section h2 { 
+    text-align: center;
+    font-size: 2.2rem; 
+    color: var(--dark-green); 
+    margin-bottom: 3rem;   
+    font-weight: 600;
+}
+
+.promo-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    gap: 2.5rem; 
+}
+
+.promo-card {
+    background-color: var(--light-gray-bg); 
+    border-radius: 10px; 
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+.promo-card:hover {
+    transform: translateY(-6px); 
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* --- ВАШИ ДОБАВЛЕННЫЕ СТИЛИ ЗДЕСЬ --- */
+.promo-card__placeholder {
+    height: 220px; 
+    background-color: var(--light-green); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Важно, если изображение больше плейсхолдера */
+    position: relative; /* Для возможного абсолютного позиционирования иконки */
+    border-bottom: 1px solid var(--border-color);
+}
+
+.promo-card__image { /* Стили для тега <img> */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Изображение будет красиво заполнять контейнер */
+    display: block; /* Убрать лишние отступы под изображением */
+}
+
+.promo-card__placeholder .promo-icon-placeholder { /* Иконка-заглушка, если изображение не загружено */
+    font-size: 3.5rem; 
+    color: rgba(0,0,0,0.1); 
+    opacity: 0.7;
+    position: absolute; /* Если изображение не загрузится, иконка будет по центру */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+/* --- КОНЕЦ ВАШИХ ДОБАВЛЕННЫХ СТИЛЕЙ --- */
+
+
+.promo-card__content {
+    padding: 1.8rem; 
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+}
+.promo-card__text-block { 
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    margin-bottom: 1.5rem; 
+}
+
+.promo-card h3 { 
+    font-size: 1.4rem; 
+    color: var(--text-color-dark); 
+    margin-bottom: 0.6rem; 
+    font-weight: 600;
+}
+
+.promo-card__subtitle { 
+    font-size: 0.95em;
+    color: var(--dark-gray); 
+    margin-bottom: 0.8rem; 
+    min-height: 2.8em; 
+    line-height: 1.45;
+    overflow: hidden; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
+
+.promo-card__price { 
+    color: var(--text-color-dark); 
+    font-weight: 600; 
+    font-size: 1.15em; 
+    margin-bottom: 0;
+}
+.promo-card__price strong { 
+    font-size: 1.2em; 
+    color: var(--primary-green);
+}
+
+.promo-card .btn--secondary { 
+    margin-top: auto;  
+    align-self: center; 
+    padding: 0.7em 1.8em; 
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+/* --- END OF НОВЫЕ/ОБНОВЛЕННЫЕ СТИЛИ для Promo Section --- */
+
+
+/* --- Buttons (General) --- */
+.btn { 
+    display: inline-block; padding: 0.6rem 1.2rem; border-radius: 4px; 
+    font-weight: 500; cursor: pointer; text-align: center; 
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.btn--secondary { 
+    background-color: var(--white); color: var(--primary-green); 
+    border: 1px solid var(--primary-green); 
+}
+.btn--secondary:hover { 
+    background-color: var(--light-green); border-color: var(--dark-green); 
+    color: var(--dark-green); 
+}
+
+/* --- Footer --- */
+.footer {
+    background-color: var(--dark-green); color: var(--light-gray-bg); 
+    padding: 2rem 0; margin-top: 4rem; 
+}
+.footer__container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer__links a { color: var(--light-gray-bg); margin-right: 1rem; font-size: 0.9rem; }
+.footer__links a:last-child { margin-right: 0; }
+.footer__links a:hover { color: var(--white); text-decoration: underline; }
+.footer__copyright { font-size: 0.9rem; text-align: right; flex-grow: 1; }
+
+/* --- Адаптивность --- */
+@media (max-width: 992px) {
+    .hero h1 { font-size: 2.2rem; } 
+    h1 { font-size: 2.2rem; } 
+    .search-form__fields { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+}
+@media (max-width: 768px) {
+    .header__container { flex-direction: column; gap: 1rem; }
+    .header__nav ul { justify-content: center; flex-wrap: wrap; gap: 0.5rem 1rem; }
+    .header__nav li { margin-left: 0; }
+    .hero h1 { font-size: 2rem; }
+    h1 { font-size: 2rem; } 
+    h2 { font-size: 1.8rem; }
+    .hero { padding: 3rem 0; }
+    .search-form { padding: 1.5rem; }
+    .search-form__fields { grid-template-columns: 1fr 1fr; }
+    .search-form__button { width: 100%; margin-top: 1rem; }
+    .footer__container { flex-direction: column; text-align: center; }
+    .footer__copyright { text-align: center; margin-top: 1rem; }
+
+    .promo-section {
+        padding: 3rem 0; 
+    }
+    .promo-section h2 {
+        font-size: 1.8rem; 
+        margin-bottom: 2rem;
+    }
+    .promo-cards {
+        gap: 1.5rem; 
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    }
+    .promo-card__placeholder {
+        height: 180px; 
+    }
+    .promo-card__content { 
+        padding: 1.2rem;
+    }
+    .promo-card h3 {
+        font-size: 1.2rem;
+    }
+    .promo-card__price {
+        font-size: 1.05em;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-form__options { flex-direction: column; align-items: center; gap: 0.8rem; }
+    .search-form__fields { grid-template-columns: 1fr; }
+    .promo-section { padding: 2rem 0; } 
+    .promo-cards { grid-template-columns: 1fr; } 
+}
+/* Убрана доработка для .promo-card__content, так как уже есть выше в @media (max-width: 768px) */

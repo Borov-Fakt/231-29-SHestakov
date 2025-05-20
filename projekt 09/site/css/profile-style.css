@@ -1,0 +1,297 @@
+/* ==========================================================================
+   Стили для страницы Профиля (profile.html) - ДОПОЛНЕНИЕ к style.css
+   ЗАВИСИТ ОТ ПЕРЕМЕННЫХ И БАЗОВЫХ СТИЛЕЙ ИЗ style.css
+   Стили для кастомных profile-header/footer УДАЛЕНЫ
+   ========================================================================== */
+
+/* --- Основной контейнер страницы Профиля --- */
+main.profile-page-container {
+    max-width: 800px;
+    margin: 2.5rem auto; /* Увеличен отступ сверху/снизу */
+    padding: 2.5rem;    /* Увеличен внутренний отступ */
+    background-color: var(--white);
+    border-radius: 12px; /* Более скругленные углы контейнера */
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08); /* Более заметная тень */
+    flex-grow: 1;
+}
+
+.profile-page-container h1 {
+    text-align: center;
+    color: var(--dark-green);
+    font-size: 2rem; /* Крупнее заголовок страницы */
+    margin-bottom: 3rem; /* Больше отступ */
+    font-weight: 700;
+}
+
+/* --- Общие стили для Секций Профиля --- */
+.profile-section {
+    margin-bottom: 3rem; /* Увеличены отступы между секциями */
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--medium-gray);
+}
+.profile-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.profile-section h2 {
+    font-size: 1.6rem; /* Крупнее заголовки секций */
+    color: var(--primary-green);
+    margin-bottom: 1.8rem;
+    font-weight: 600;
+    padding-bottom: 0.8rem;
+    border-bottom: 3px solid var(--light-green);
+    display: flex; /* Для выравнивания иконки и текста */
+    align-items: center;
+    gap: 0.6em;
+}
+
+/* Иконка в заголовке секции */
+.icon-title {
+    opacity: 0.8;
+    font-size: 0.9em; /* Немного меньше основного шрифта заголовка */
+}
+
+.section-description {
+    color: var(--dark-gray);
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+}
+
+/* --- Стили для отображения Личной Информации --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem; /* Увеличен gap */
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    background-color: var(--light-gray);
+    padding: 1rem 1.2rem;
+    border-radius: 8px; /* Скругление элемента */
+    border-left: 4px solid var(--primary-green); /* Более заметная полоска */
+}
+
+.info-item label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--dark-gray);
+    margin-bottom: 0.4rem;
+    font-weight: 500;
+}
+
+.info-item .value {
+    font-size: 1.05rem;
+    color: var(--text-color);
+    font-weight: 600; /* Сделать значение жирнее */
+}
+
+/* --- Базовые стили КНОПОК (.btn) --- */
+/* Убедитесь, что они не конфликтуют с style.css или переопределяют его как нужно */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6em; /* Пространство между иконкой и текстом */
+    padding: 0.8em 1.6em; /* Относительные отступы */
+    border-radius: 8px;  /* Еще более скругленные углы */
+    font-weight: 600;
+    font-size: 0.95rem; /* Базовый размер шрифта кнопок */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.07); /* Постоянная легкая тень */
+    letter-spacing: 0.5px; /* Небольшой разрядка букв */
+}
+
+.btn i.fas { /* Стили для иконок внутри кнопок */
+     line-height: 1; /* Выровнять по вертикали */
+     margin-right: 0.1em; /* Небольшой дополнительный отступ */
+}
+
+.btn:hover {
+    transform: translateY(-2px) scale(1.01); /* Подъем и легкое увеличение */
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.12); /* Усиленная тень */
+}
+.btn:active {
+    transform: translateY(0) scale(0.99); /* Легкое "нажатие" */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+
+/* --- Вариации Кнопок для Профиля --- */
+
+.btn--edit {
+    background: linear-gradient(to bottom, var(--white), #f0f0f0); /* Бело-серый градиент */
+    color: var(--primary-green);
+    border: 1px solid var(--medium-gray); /* Легкая граница */
+    box-shadow: none; /* Убрать тень для плоского вида */
+}
+.btn--edit:hover {
+    background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+    border-color: var(--dark-gray);
+}
+.btn--edit i { color: var(--primary-green); }
+
+/* Основная зеленая кнопка */
+.btn--primary, .btn--add-traveler { /* Объединяем стиль */
+    background: linear-gradient(135deg, var(--accent-green), var(--primary-green)); /* Зеленый градиент */
+    color: var(--white);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.btn--primary:hover, .btn--add-traveler:hover {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green)); /* Темнее градиент */
+}
+.btn--primary i, .btn--add-traveler i { color: var(--white); }
+
+
+/* --- Стили для Карточек Пассажиров --- */
+.saved-travelers-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem; /* Увеличен отступ */
+    margin-bottom: 2rem;
+}
+
+.traveler-card {
+    background-color: var(--white);
+    border: 1px solid var(--medium-gray);
+    border-radius: 8px; /* Скругление карточки */
+    padding: 1.5rem; /* Больше отступы внутри */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Тень карточки */
+    transition: box-shadow 0.3s ease;
+}
+.traveler-card:hover {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08); /* Тень при наведении */
+}
+
+.traveler-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem; /* Больше отступ между строками инфо */
+    flex-grow: 1;
+}
+
+.traveler-name {
+    font-weight: 600;
+    font-size: 1.15rem; /* Крупнее имя */
+    color: var(--dark-green);
+}
+
+.traveler-info span {
+    font-size: 0.95rem;
+    color: var(--dark-gray);
+    display: flex; /* Для иконки */
+    align-items: center;
+    gap: 0.5em;
+}
+.icon-text {
+    opacity: 0.7;
+}
+
+.traveler-actions {
+    display: flex;
+    gap: 0.8rem; /* Меньше отступ между кнопками */
+    flex-shrink: 0;
+}
+
+.action-link {
+    font-size: 1.1rem; /* Крупнее иконки действий */
+    padding: 0.5rem;
+    border-radius: 50%; /* Круглая область */
+    width: 36px; /* Фикс размер */
+    height: 36px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+.action-link i { margin: 0;} /* Убираем отступ иконки */
+
+.action-link--edit { color: #3498db; } /* Синий */
+.action-link--edit:hover { background-color: #eaf4fb; color: #2980b9; }
+
+.action-link--delete { color: var(--danger-red); }
+.action-link--delete:hover { background-color: var(--danger-red-light); color: #c0392b; }
+
+.no-travelers p {
+    text-align: center;
+    color: var(--dark-gray);
+    padding: 2rem 0;
+    border: 2px dashed var(--medium-gray);
+    border-radius: 8px;
+    background-color: var(--light-gray);
+    font-style: italic;
+}
+
+/* --- Стили для Секции Безопасности (обновленные кнопки) --- */
+.security-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.security-actions .btn--secondary {
+    background: linear-gradient(to bottom, var(--white), #f0f0f0); /* Градиент кнопки выход/сменить пароль */
+    color: var(--dark-gray);
+    border: 1px solid var(--medium-gray);
+    box-shadow: none;
+}
+.security-actions .btn--secondary:hover {
+    background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+    color: var(--dark-green); /* Зеленый текст при наведении */
+    border-color: var(--dark-gray);
+}
+.security-actions .btn--secondary i { color: var(--dark-gray); transition: color 0.3s ease;}
+.security-actions .btn--secondary:hover i { color: var(--dark-green); }
+
+
+.security-actions .btn--danger {
+    background: linear-gradient(135deg, #ff6b6b, #ee5253); /* Ярче красный */
+    color: var(--white);
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+.security-actions .btn--danger:hover {
+    background: linear-gradient(135deg, #ee5253, #d63031); /* Темнее */
+}
+.security-actions .btn--danger i { color: var(--white); }
+
+/* --- Адаптивность (без изменений логики, но стили выше могут повлиять) --- */
+@media (max-width: 768px) {
+    main.profile-page-container {
+        margin: 1.5rem auto;
+        padding: 1.5rem;
+    }
+    .profile-page-container h1 { font-size: 1.8rem; margin-bottom: 2rem; }
+    .profile-section h2 { font-size: 1.4rem; }
+    .info-grid { grid-template-columns: 1fr; }
+    .traveler-card { flex-direction: column; align-items: stretch; padding: 1.2rem; } /* Изменен align-items */
+    .traveler-actions { margin-top: 1rem; justify-content: flex-end; }
+}
+
+@media (max-width: 480px) {
+    main.profile-page-container {
+        margin: 1rem 10px; /* Поля по бокам */
+        padding: 1.5rem 1rem; /* Асимметричный паддинг */
+        border-radius: 8px;
+    }
+    .profile-page-container h1 { font-size: 1.6rem; margin-bottom: 1.5rem;}
+    .profile-section h2 { font-size: 1.3rem; margin-bottom: 1.2rem; }
+    .btn { padding: 0.7em 1.4em; font-size: 0.9rem; }
+    .traveler-name { font-size: 1.05rem; }
+    .traveler-info span { font-size: 0.9rem;}
+    .traveler-actions { gap: 0.5rem; } /* Уменьшить отступ между кнопками */
+    .action-link { width: 32px; height: 32px; font-size: 1rem;}
+    .security-actions { flex-direction: column; align-items: stretch; gap: 0.8rem; }
+    .security-actions .btn { width: 100%; margin-right: 0; }
+}

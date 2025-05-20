@@ -1,0 +1,296 @@
+/* css/booking-details-user-style.css */
+
+/* :root { 
+    /* Переменные наследуются из style.css */
+/* } */
+
+body {
+    background-color: var(--light-gray-bg, #f8f9fa); /* Общий фон страницы */
+}
+
+.main-content-booking-details {
+    padding: 2rem 0 3rem 0;
+}
+
+.page-content-container { /* Если вы используете этот контейнер */
+    max-width: 900px; /* Или другая ширина */
+    margin: 0 auto;
+}
+
+.booking-detail-header {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border-color, #dee2e6);
+}
+
+.booking-detail-header .page-title { /* Переопределяем отступ у общего .page-title */
+    margin-bottom: 0.5rem;
+    font-size: 2rem; /* Чуть меньше, чем главный заголовок на my-bookings */
+}
+
+.pnr-highlight {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-green, #28a745);
+}
+
+.actions-top-bar {
+    display: flex;
+    justify-content: space-between; /* Кнопки по краям */
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    background-color: var(--white, #fff);
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+/* Стили для .btn, .btn--outline, .btn--secondary, .btn--small должны быть в style.css */
+
+.booking-main-info-panel {
+    background-color: var(--white, #fff);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    margin-bottom: 2.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem 1.5rem;
+}
+
+.info-row {
+    display: flex;
+    flex-direction: column; /* Лейбл над значением */
+    /* Или flex-direction: row; justify-content: space-between; */
+}
+.info-row .info-label {
+    font-size: 0.85rem;
+    color: var(--dark-gray, #6c757d);
+    font-weight: 500;
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+}
+.info-row .info-label i {
+    margin-right: 0.5em;
+    opacity: 0.8;
+    color: var(--primary-green, #28a745);
+}
+.info-row .info-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color-dark, #343a40);
+}
+.info-row .price-value {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--primary-green, #28a745);
+}
+.info-row .important-value { /* Для дедлайна оплаты */
+    font-weight: 700;
+    color: var(--error-text, #721c24);
+}
+.status-badge-detail { /* Статус в деталях */
+    font-size: 0.9rem; font-weight: 600;
+    padding: 0.3em 0.8em; border-radius: 15px;
+    color: var(--white, #fff); display: inline-block;
+    /* Цвета .status-booking-* должны наследоваться из my-bookings-style.css или style.css */
+}
+
+
+.booking-section {
+    margin-bottom: 2.5rem;
+    background-color: var(--white, #fff);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.booking-section h2 {
+    font-size: 1.5rem;
+    color: var(--dark-green, #1e7e34);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color, #dee2e6);
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.booking-section h2 i { font-size: 0.9em; opacity: 0.8; }
+
+.no-data-message {
+    font-style: italic;
+    color: var(--dark-gray, #6c757d);
+    padding: 1rem 0;
+    text-align: center;
+}
+
+.pax-card {
+    border: 1px solid var(--medium-gray, #dee2e6);
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background-color: var(--light-gray-bg, #f8f9fa);
+}
+.pax-card:last-child { margin-bottom: 0; }
+
+.pax-card__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    gap: 0.8rem;
+}
+.pax-card__header .pax-icon {
+    font-size: 1.8rem;
+    color: var(--primary-green, #28a745);
+}
+.pax-card__header h3 {
+    font-size: 1.15rem;
+    color: var(--text-color-dark, #343a40);
+    margin: 0;
+    font-weight: 600;
+    flex-grow: 1; /* Чтобы имя занимало место */
+}
+.pax-type-badge {
+    font-size: 0.8rem;
+    background-color: var(--medium-gray, #adb5bd);
+    color: var(--white, #fff);
+    padding: 0.2em 0.6em;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.pax-card__details p {
+    font-size: 0.9rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-color-dark, #343a40);
+    line-height: 1.5;
+}
+.pax-card__details p strong {
+    color: var(--dark-gray, #6c757d);
+    font-weight: 500;
+    margin-right: 0.3em;
+}
+.pax-card__details p.ticket-number-pax {
+    margin-top: 0.5rem;
+    padding: 0.5rem;
+    background-color: var(--light-green, #e2f0e6);
+    border-radius: 4px;
+}
+.pax-card__details p.ticket-number-pax strong { color: var(--primary-green); }
+.pax-card__details p.ticket-number-pax span { font-weight: 700; color: var(--primary-green); }
+.pax-card__details p.ticket-number-pax i { margin-right: 0.4em;}
+
+
+.segment-item {
+    border: 1px solid var(--medium-gray, #dee2e6);
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    background-color: var(--light-gray-bg, #f8f9fa);
+    overflow: hidden; /* Чтобы скругления работали с вложенными элементами */
+}
+.segment-item:last-child { margin-bottom: 0; }
+
+.segment-item__flight-info {
+    padding: 0.8rem 1rem;
+    background-color: var(--dark-gray, #6c757d); /* Темный фон для инфо о рейсе */
+    color: var(--white, #fff);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.airline-logo-placeholder i { font-size: 1.5rem; }
+.segment-item__flight-info .flight-number { font-weight: 700; font-size: 1.1rem; }
+.segment-item__flight-info .airline-name { font-weight: 500; }
+.segment-item__flight-info .operating-airline-name { font-size: 0.85em; opacity: 0.8; }
+
+.segment-item__details {
+    padding: 1rem;
+    display: flex;
+    align-items: stretch; /* Чтобы точки вылета/прилета были одинаковой высоты */
+    gap: 1rem;
+}
+.segment-point {
+    flex: 1;
+    text-align: center;
+    padding: 0.5rem;
+}
+.segment-point--departure { text-align: left; }
+.segment-point--arrival { text-align: right; }
+
+.segment-point__time { font-size: 1.5rem; font-weight: 600; color: var(--text-color-dark); margin-bottom: 0.1rem;}
+.segment-point__date { font-size: 0.9rem; color: var(--dark-gray); margin-bottom: 0.5rem; }
+.segment-point__city-iata { font-size: 1.1rem; font-weight: 500; color: var(--text-color-dark); }
+.segment-point__city-iata .iata-code { font-weight: 700; }
+.segment-point__airport { font-size: 0.85rem; color: var(--dark-gray); margin-top: 0.2rem;}
+.segment-point__terminal { font-size: 0.8rem; color: var(--medium-gray); margin-top: 0.2rem; font-style: italic;}
+
+.segment-arrow-duration {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 1rem;
+    flex-shrink: 0; /* Чтобы не сжимался */
+}
+.segment-arrow-duration > i.fa-long-arrow-alt-right { /* Стрелка */
+    font-size: 2rem;
+    color: var(--primary-green, #28a745);
+    margin-bottom: 0.3rem;
+}
+.segment-arrow-duration .duration {
+    font-size: 0.85rem;
+    color: var(--dark-gray, #6c757d);
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 0.3em;
+}
+
+.segment-item__additional-info {
+    padding: 0.5rem 1rem;
+    background-color: #fdfdfd; /* Очень светлый фон */
+    font-size: 0.85rem;
+    color: var(--dark-gray);
+    border-top: 1px solid var(--border-color, #dee2e6);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.layover-info-user { /* Переименован от layover-info из админки */
+    text-align: center; padding: 0.8rem; color: var(--dark-gray);
+    font-style: italic; font-size: 0.9em; margin: 0.5rem auto;
+    background-color: var(--white, #fff); border-radius: 4px;
+    border: 1px dashed var(--medium-gray, #adb5bd);
+    max-width: 300px; /* Ограничим ширину блока пересадки */
+}
+.layover-info-user i { margin-right: 0.4em; color: var(--primary-green);}
+
+.booking-user-actions {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color, #dee2e6);
+    display: flex;
+    justify-content: center; /* Кнопки по центру */
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .booking-detail-header .page-title { font-size: 1.6rem; }
+    .pnr-highlight { font-size: 1.1rem; }
+    .actions-top-bar { flex-direction: column; gap: 0.5rem; }
+    .actions-top-bar .btn { width: 100%; }
+
+    .booking-main-info-panel { grid-template-columns: 1fr; } /* Инфо в одну колонку */
+    .booking-section { padding: 1rem; }
+    .booking-section h2 { font-size: 1.3rem; }
+
+    .pax-card__header { flex-direction: column; align-items: flex-start; }
+    .pax-card__header h3 { font-size: 1.1rem; }
+
+    .segment-item__details { flex-direction: column; align-items: center; gap: 0.5rem;}
+    .segment-point { text-align: center; }
+    .segment-point--departure, .segment-point--arrival { text-align: center; }
+    .segment-arrow-duration > i.fa-long-arrow-alt-right { transform: rotate(90deg); margin: 0.5rem 0; }
+}

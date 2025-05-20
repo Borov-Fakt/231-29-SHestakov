@@ -1,0 +1,160 @@
+/* css/checkout-style.css */
+
+/* :root { /* Переменные наследуются из style.css */ /* } */
+
+body {
+    background-color: var(--light-gray-bg, #f8f9fa);
+}
+
+.main-checkout {
+    padding: 2rem 0 3rem 0;
+}
+
+.page-title-checkout { /* Отличается от .page-title из my-bookings для возможности разных стилей */
+    text-align: center;
+    font-size: 2rem;
+    color: var(--dark-green, #1e7e34);
+    margin-bottom: 2rem;
+    font-weight: 600;
+}
+
+.checkout-message { /* Для ошибок валидации с сервера */
+    padding: 1rem; margin: 0 auto 1.5rem auto; border-radius: 6px;
+    text-align: center; font-weight: 500; max-width: 700px;
+    border: 1px solid transparent;
+}
+.checkout-message.error { background-color: var(--error-bg, #f8d7da); color: var(--error-text, #721c24); border-color: var(--error-border, #f5c6cb); }
+
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* По умолчанию одна колонка */
+    gap: 2rem;
+}
+
+@media (min-width: 992px) {
+    .checkout-grid {
+        grid-template-columns: 2fr 3fr; /* Детали рейса слева, форма справа */
+    }
+}
+
+.checkout-flight-details, .checkout-form-section {
+    background-color: var(--white, #fff);
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.checkout-flight-details h2, .checkout-form-section h2 {
+    font-size: 1.4rem;
+    color: var(--primary-green, #28a745);
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color, #dee2e6);
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+.checkout-flight-details h2 i, .checkout-form-section h2 i { font-size: 0.9em; opacity: 0.8; }
+
+.selected-flight-summary p {
+    margin-bottom: 0.8rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+.selected-flight-summary strong {
+    font-weight: 600;
+    color: var(--text-color-dark, #343a40);
+}
+.segment-summary {
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed var(--medium-gray, #dee2e6);
+    margin-bottom: 0.8rem;
+}
+.segment-summary:last-of-type {
+    border-bottom: none;
+    margin-bottom: 1rem;
+}
+.segment-summary strong { color: var(--dark-green); } /* Уточнил цвет */
+.segment-summary small { color: var(--dark-gray); font-size: 0.9em; }
+
+.total-price-summary {
+    font-size: 1.3rem !important; /* Выделить цену */
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color, #dee2e6);
+    text-align: right;
+}
+.total-price-summary strong {
+    color: var(--primary-green, #28a745) !important; /* Важно, если есть другие strong */
+}
+
+
+.passenger-fieldset {
+    border: 1px solid var(--border-color, #dee2e6);
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+    border-radius: 6px;
+}
+.passenger-fieldset legend {
+    padding: 0 0.5em;
+    font-weight: 600;
+    color: var(--dark-gray, #6c757d);
+    font-size: 1.1em;
+}
+
+.form-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1.2rem; /* Для отступа между рядами, если поля в один ряд */
+}
+.form-row:last-child { margin-bottom: 0; }
+.form-group.half-width { flex: 1 1 0; /* Поля в ряду занимают равное место */ }
+
+/* Общие стили для .form-group, input, select наследуются из style.css */
+/* Можно добавить специфичные здесь, если нужно */
+.checkout-form-section .form-group label {
+    font-size: 0.9rem; /* Лейблы чуть крупнее */
+    font-weight: 500;
+}
+
+
+.checkout-actions {
+    margin-top: 2rem;
+    text-align: center;
+}
+.checkout-actions .terms-agreement {
+    font-size: 0.85rem;
+    color: var(--dark-gray, #6c757d);
+    margin-bottom: 1.5rem;
+}
+.checkout-actions .terms-agreement a {
+    color: var(--primary-green, #28a745);
+    text-decoration: underline;
+}
+.btn--large-checkout { /* Большая кнопка оформления */
+    padding: 0.9em 2.5em;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+.btn--large-checkout i { margin-right: 0.5em; }
+
+
+@media (max-width: 768px) {
+    .checkout-grid {
+        grid-template-columns: 1fr; /* Всегда одна колонка */
+    }
+    .checkout-flight-details {
+        margin-bottom: 1.5rem; /* Отступ от формы на мобильных */
+    }
+    .form-row {
+        flex-direction: column; /* Поля друг под другом */
+        gap: 0; /* Убрать gap, т.к. отступ у .form-group */
+        margin-bottom: 0;
+    }
+    .form-group.half-width {
+        margin-bottom: 1.2rem; /* Восстановить отступ */
+    }
+    .form-group.half-width:last-child { margin-bottom: 0; }
+}
